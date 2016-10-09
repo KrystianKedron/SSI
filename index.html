@@ -1,0 +1,179 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Dynamic Team Charts v0.1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="icon" href="/sakenabe/clients/icons/solaris.png">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="scripts.js"></script>
+    <script src="options.js"></script>
+    <script type="text/javascript">
+        $(function() {
+
+            setOptions(Highcharts);
+
+            // Create the chart
+            $('#plot').highcharts('StockChart', {
+                chart: {
+                    alignTicks: false,
+                    events: {
+                        load: function()
+                        {
+                            // set up the updating of the chart each second
+                            var series = this.series;
+                            readComputerDate('data1', series);
+                            update(series);
+                            setInterval(function() { update(series); }, 10000);
+                        }
+                    }
+                },
+
+                rangeSelector: {
+                    buttons: [{
+                        count: 4,
+                        type: 'hour',
+                        text: '4h'
+                    },{
+                        count: 8,
+                        type: 'hour',
+                        text: '8h'
+                    }, {
+                        count: 12,
+                        type: 'hour',
+                        text: '12h'
+                    }, {
+                        count: 24,
+                        type: 'hour',
+                        text: '24h'
+                    }, {
+                        count: 48,
+                        type: 'hour',
+                        text: '48h'
+                    }, {
+                        count: 72,
+                        type: 'hour',
+                        text: '72h'
+                    }],
+                    inputEnabled: false,
+                    selected: 1
+                },
+
+                exporting: {
+                    enabled: false
+                },
+
+                series : [
+                    {
+                        name : 'Current',
+                        data : get_zero(),
+                        yAxis: 0,
+                        color: '#039',
+                        type: 'area',
+                        animation: false
+                    }
+                ],
+
+                yAxis: [
+                    {
+                        tickInterval:	100,
+                        min:			0,
+                        max:			600,
+                        crosshair:		true,
+                        opposite:		false,
+                        title: {
+                            text:       'Current (mA)',
+                            style:      { color: Highcharts.getOptions().colors[0]},
+                            useHTML:    true
+                        },
+                        labels: {
+
+                            format:     '{value}',
+                            align:      'right',
+                            style:      { color: Highcharts.getOptions().colors[0]}
+                        }
+                    }
+                ],
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    x: 0,
+                    verticalAlign: 'top',
+                    y: 0
+                },
+
+                scrollbar: {
+                    enabled: false
+                },
+
+                navigator: {
+                    adaptToUpdatedData: true
+                }
+            });
+
+        });
+
+    </script>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Signika:400,700">
+    <link href="https://fonts.googleapis.com/css?family=Signika:400,700" rel="stylesheet" type="text/css"></head>
+
+<body style="background-color:#2a2a2b">
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<div id="container">
+
+    <div id="plot" style="visibility: hidden"></div>
+
+    <div id="textLoading"> Loading Data!..... <span id="wyk" style="color: white; font-size: 48px"> </span></div>
+
+    <div class="bottomLabel">
+        <div id="labelInfo">Message </div>
+        <div class="infoBox"> <p style="float: left" id="GeneralInfo">no beam<br></p> </div>
+    </div>
+
+</div>
+
+<div class="userContainer">
+    <div class="divUser">
+        <div style="clear: both; float: left; color: white; font-size: 1.15vmax; margin-left: 28.5%;"> Team Member </div>
+        <hr style="clear:both;color: white;width: 20vmax;margin-bottom:0px;margin-top: 0px;margin-left: 0.6vmax;">
+        <div style="margin-top: 0.4vmax">
+        <div class="nameLabel" style="margin-left: 10px; margin-top: 0.6vmax"> Your Nick </div>
+        <div id="user1">
+            <div>
+                <div onclick="showName()" style="background-color: orange;" id="rectangle05" class="panel rectangle"><input style="visibility: hidden; color:black; width: 4vmax; height: 1.6vmax" type="text" name="nick"></div>
+            </div>
+        </div>
+            <script>
+                $(document).ready(function(){
+                    $('#rectangle05').keypress(function (e) {
+                        if (e.which == 13) {
+                            $("input").css("background-color", "yellow");
+                            $.post("demo_test_post.asp",
+                                {
+                                    name: $("#rectangle05").text(),
+                                    city: "Duckburg"
+                                },
+                                function(data,status){
+                                    alert("Data: " + data + "\nStatus: " + status);
+                                });
+                            return false;
+                        }
+                    });
+                });
+            </script>
+
+        <div style="float: left">
+            <div id="labelUndu"> Value to add </div>
+            <div>
+                <div onclick="showValue()" style="background-color: white;" id="device05" class="panel"><input style="visibility: hidden; color:black; width: 4vmax; height: 1.6vmax" type="text" name="nick"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+</body></html>
