@@ -1,0 +1,71 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Dynamic Team Charts Server v0.1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <script src="scripts.js"></script>
+    <script type="text/javascript"></script>
+</head>
+<body style="background-color:#2a2a2b">
+
+<div id="container">
+
+    <div class="userContainer">
+        <div class="divUser">
+            <div style="clear: both; float: left; color: white; font-size: 3.5vmax; margin-left: 15.5%;"> Welcome </div>
+            <hr style="clear:both;color: white;width: 20vmax;margin-bottom:0px;margin-top: 0px;margin-left: 0.6vmax;">
+            <div style="margin-top: 0.4vmax">
+                <div class="nameLabel" id="nameLabel" style="margin-left: 10px; margin-top: 0.6vmax"> Your Nick </div>
+                <div id="user1">
+                    <div>
+                        <div onclick="showName()" style="background-color: orange;" id="rectangle05" class="panel rectangle"><input id="name" style="visibility: hidden; color:black; width: 4vmax; height: 1.6vmax" type="text"></div>
+                    </div>
+                </div>
+
+                <div style="float: left">
+                    <div id="labelUndu"> Value to add </div>
+                    <div>
+                        <div onclick="showValue()" style="background-color: white;" id="device05" class="panel"><input style="visibility: hidden; color:black; width: 4vmax; height: 1.6vmax" type="text" id="value"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+                $('#rectangle05').keypress(function (e) {
+                    if (e.which == 13) {
+                        $("input").css("background-color", "yellow");
+                        $.post("writeFile.asp",
+                                {
+                                    name: $("#name").val(),
+                                    value: $("#value").val()
+                                },
+                                function(data,status){
+                                    alert("Status: " + status);
+                                    removeFocus()
+                                });
+                        return false;
+                    }
+                });
+                $('#device05').keypress(function (e) {
+                    if (e.which == 13) {
+                        $("input").css("background-color", "yellow");
+                        $.post("writeFile.asp",
+                                {
+                                    name: $("#name").val(),
+                                    value: $("#value").val()
+                                },
+                                function(data,status){
+                                    alert("Status: " + status);
+                                    removeFocus()
+                                });
+                        return false;
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>
+
+</body></html>

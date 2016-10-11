@@ -84,21 +84,6 @@ body, html {
     padding-left: 0.1vmax !important;
 }
 
-.rectangle-green2{
-    float: left;
-    background-color: green;
-    width: 4vmax;
-    height: 1.5vmax
-}
-
-.rectangle-orange2{
-    float: left;
-    background-color: orange;
-    width: 4vmax;
-    height: 1.5vmax;
-    margin-left: 10px !important
-}
-
 #device04 {
     float: left;
     font-size: 0.9vmax;

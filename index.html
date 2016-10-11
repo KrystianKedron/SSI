@@ -1,9 +1,8 @@
 <html><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Dynamic Team Charts v0.1</title>
+    <title>Dynamic Team Charts Client v0.1</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="icon" href="/sakenabe/clients/icons/solaris.png">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="scripts.js"></script>
@@ -22,9 +21,8 @@
                         {
                             // set up the updating of the chart each second
                             var series = this.series;
-                            readComputerDate('data1', series);
-                            update(series);
-                            setInterval(function() { update(series); }, 10000);
+                            readFile('data1', series);
+                            setInterval(function() { update('data1', series); }, 10000);
                         }
                     }
                 },
@@ -65,7 +63,7 @@
 
                 series : [
                     {
-                        name : 'Current',
+                        name : 'Money',
                         data : get_zero(),
                         yAxis: 0,
                         color: '#039',
@@ -77,12 +75,10 @@
                 yAxis: [
                     {
                         tickInterval:	100,
-                        min:			0,
-                        max:			600,
                         crosshair:		true,
                         opposite:		false,
                         title: {
-                            text:       'Current (mA)',
+                            text:       'Money (tys)',
                             style:      { color: Highcharts.getOptions().colors[0]},
                             useHTML:    true
                         },
@@ -126,7 +122,6 @@
 <div id="container">
 
     <div id="plot" style="visibility: hidden"></div>
-
     <div id="textLoading"> Loading Data!..... <span id="wyk" style="color: white; font-size: 48px"> </span></div>
 
     <div class="bottomLabel">
@@ -141,37 +136,12 @@
         <div style="clear: both; float: left; color: white; font-size: 1.15vmax; margin-left: 28.5%;"> Team Member </div>
         <hr style="clear:both;color: white;width: 20vmax;margin-bottom:0px;margin-top: 0px;margin-left: 0.6vmax;">
         <div style="margin-top: 0.4vmax">
-        <div class="nameLabel" style="margin-left: 10px; margin-top: 0.6vmax"> Your Nick </div>
-        <div id="user1">
-            <div>
-                <div onclick="showName()" style="background-color: orange;" id="rectangle05" class="panel rectangle"><input style="visibility: hidden; color:black; width: 4vmax; height: 1.6vmax" type="text" name="nick"></div>
+        <div class="nameLabel" id="nameLabel" style="margin-left: 10px; margin-top: 0.6vmax"> Crejzer </div>
+            <div id="user1">
+                <div>
+                    <div style="background-color: green;" id="rectangle1" class="panel rectangle">Online</div>
+                </div>
             </div>
-        </div>
-            <script>
-                $(document).ready(function(){
-                    $('#rectangle05').keypress(function (e) {
-                        if (e.which == 13) {
-                            $("input").css("background-color", "yellow");
-                            $.post("demo_test_post.asp",
-                                {
-                                    name: $("#rectangle05").text(),
-                                    city: "Duckburg"
-                                },
-                                function(data,status){
-                                    alert("Data: " + data + "\nStatus: " + status);
-                                });
-                            return false;
-                        }
-                    });
-                });
-            </script>
-
-        <div style="float: left">
-            <div id="labelUndu"> Value to add </div>
-            <div>
-                <div onclick="showValue()" style="background-color: white;" id="device05" class="panel"><input style="visibility: hidden; color:black; width: 4vmax; height: 1.6vmax" type="text" name="nick"></div>
-            </div>
-        </div>
         </div>
     </div>
 </div>
