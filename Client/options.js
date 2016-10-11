@@ -1,6 +1,3 @@
-/**
- * Created by tango on 08/10/16.
- */
 // Set the theme and general chart options
 function setOptions(hc)
 {

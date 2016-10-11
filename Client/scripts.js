@@ -1,6 +1,3 @@
-/**
- * Created by tango on 08/10/16.
- */
 var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
 
 var dataToAdd = [];
