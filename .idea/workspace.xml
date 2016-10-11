@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5cf813f-b73e-4e48-99df-988f4b3328e1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/writeFile.asp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/demo_test_post.asp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/index2.asp" afterPath="$PROJECT_DIR$/index2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data1" afterPath="$PROJECT_DIR$/data1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts.js" afterPath="$PROJECT_DIR$/scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/style.css" afterPath="$PROJECT_DIR$/style.css" />
     </list>
     <ignored path="SSI1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -319,12 +309,12 @@
       <workItem from="1475878257576" duration="8346000" />
       <workItem from="1476050876925" duration="4922000" />
       <workItem from="1476205645734" duration="922000" />
-      <workItem from="1476206670529" duration="10153000" />
+      <workItem from="1476206670529" duration="10303000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24572000" />
+    <option name="totallyTimeSpent" value="24722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
